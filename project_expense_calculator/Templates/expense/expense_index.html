@@ -1,0 +1,45 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+    Profile
+   
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;">This is Expense Index page</h1>
+{% include 'partials/_message.html' %}
+<body>
+    <div class="container">
+        <table class="table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Person</th>
+                <th scope="col">Total Income</th>
+                <th scope="col">Total Expense</th>
+                <th scope="col">Total Balance</th>
+                <th scope="col">Year</th>
+                <th scope="col">Month</th>
+                <th colspan="2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for val in data %}
+              <tr>
+                <td>{{ val.person|title }}</td>
+                <td>{{ val.net_income }}</td>
+                <td>{{ val.net_expense }}</td>
+                <td>{{ val.total_balance }}</td>
+                <td>{{ val.date|date:"Y"}}</td>
+                <td>{{ val.date|date:"F" }}</td>
+                <td><a href="{% url 'exp-edit' val.id %}">Edit</a></td>
+                <td><a href="{% url 'exp-delete' val.id %}">Delete</a></td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+   
+</body>
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+    Balance-Index
+   
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;">This is index page</h1>
+{% include 'partials/_message.html' %}
+{% load static %}
+<body>
+    <div class="contaier mt-4">
+      <div class="row">
+        {% for val in data %}
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{% static '/image/moon.avif' %}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ val.person }}</h5>
+              <p class="card-text">Hello! if you want to view Profile information, please click on profile button below same goes for the Expense information.</p>
+              <a href="{% url 'per-card' val.id %}" class="btn btn-primary">Profile</a>
+              <a href="{% url 'exp-card' val.person %}" class="btn btn-primary">Expense</a>
+            </div>
+          </div>
+        </div>  
+        <br>
+        {% endfor %}
+      </div>
+    </div>
+</body>
+
+
+{% endblock %}

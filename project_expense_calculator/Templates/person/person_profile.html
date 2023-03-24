@@ -1,0 +1,38 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+    Profile
+   
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;">This is index page</h1>
+{% include 'partials/_message.html' %}
+<body>
+    <div class="container">
+        <table class="table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Person</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              <tr>
+                <td>{{ data1.person|title }}</td>
+                <td>{{ data1.email }}</td>
+                <td>{{ data1.address|title }}</td>
+                <td>{{ data1.contact }}</td>
+                </tr>
+        
+            </tbody>
+          </table>
+    </div>
+   
+</body>
+
+
+{% endblock %}

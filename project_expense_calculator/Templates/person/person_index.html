@@ -1,0 +1,39 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+    Balance-Index
+   
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;">This is User Index page</h1>
+{% include 'partials/_message.html' %}
+<body>
+    <div class="container">
+        <table class="table table-success table-striped">
+            <thead>
+              <tr>
+                <th scope="col">S.N</th>
+                <th scope="col">Person</th>
+                <th scope="col">Address</th>
+                <th colspan="3" style="text-align: center;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for val in data %}
+              <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td><a href="{% url 'per-profile' val.id %}">{{ val.person }}</a></td>
+                <td>{{ val.address }}</td>
+                <td style="font-size: small;"><a href="{% url 'per-edit' val.id %}"><b>Profile Edit</b></a></td>
+                <td style="font-size: small;"><a href="{% url 'per-delete' val.id %}"><b>Delete</b></a></td>
+              </tr>
+              
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</body>
+
+
+{% endblock %}

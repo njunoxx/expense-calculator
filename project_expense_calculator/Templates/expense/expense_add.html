@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Expense Calculate</title>
+    <h2 style="text-align: center;">Enter the Expense Details</h2>
+    <a href="{% url 'index' %}" class="btn btn-primary">BACK</a>
+    {% include 'partials/_message.html' %}
+    {% load static %}
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static '/css/bootstrap.min.css' %}">
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="container mt-5">
+            <form action="{% url 'exp-add' %}" method="post">
+                {% csrf_token %} 
+                <div class="form-group mb-2">
+                    <label>Select Person</label>
+                    <select name="person" class="form-control">
+                        {% for val in data %}
+                        <option value="{{ val.id }}">{{ val.person }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Total Income</label>
+                    <input type="number" name="net_income" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Total Expenses</label>
+                    <input type="number" name="net_expense" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" name="date" class="form-control" required>
+                </div>
+                <input type="submit" class="btn btn-primary" value="ADD">
+            </form>
+        </div>
+       
+    </div>
+</body>
+</html>
